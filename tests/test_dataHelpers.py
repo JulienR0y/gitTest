@@ -27,10 +27,11 @@ class TestDataHelpers(unittest.TestCase):
                             "col_date_month": [1, 1, 1],
                             "col_date_day": [19, 18, 20],
                             "col_date_week_day": [6, 5, 0]}
+        expected_df_break = pd.DataFrame()
         expected_df = pd.DataFrame(data=expected_df_data, index=[0, 1, 2])
 
         # Assert
-        pd.testing.assert_frame_equal(result, expected_df)
+        pd.testing.assert_frame_equal(result, expected_df_break)
 
     # @patch('data.dataHelpers.DataHelper.get_engagement_info')
     # @patch('data.dataHelpers.DataHelper._get_engagement_amounts')
