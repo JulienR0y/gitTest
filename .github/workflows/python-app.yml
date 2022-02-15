@@ -29,3 +29,6 @@ jobs:
 
       - name: debug pyenv
         run: echo ${{ steps.pyenv_installation.outputs.pyenv_root }}
+       
+      - name: pytest
+        run: pytest tests
