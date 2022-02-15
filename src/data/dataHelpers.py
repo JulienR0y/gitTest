@@ -17,7 +17,7 @@ class DataHelper:
             "port": os.environ[DbConstants.PSQL_PORT],
             "database": os.environ[DbConstants.PSQL_DATABASE]
         }
-        self.db_connection = DatabaseConnection(db_config)
+        self.db_connection = DatabaseConnection()
         self.query_builder = QueryBuilder()
 
     def get_amount_table(self, tenant_id: str, engagement_ids: str = None) -> pd.DataFrame:
@@ -85,7 +85,6 @@ class DataHelper:
             if value["reverse_fsli_id"] is not None:
 
                 accounts_mapping_flips.append({account_id: {"fsli_id": value["fsli_id"], "reverse_fsli_id": value["reverse_fsli_id"]}})
-
 
         accounts_id = [list(account.keys())[0] for account in accounts_mapping_flips]
 
