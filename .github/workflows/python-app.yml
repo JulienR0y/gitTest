@@ -10,10 +10,10 @@ on:
     branches: [ main ]
 
 jobs:
-  build:
-
+  ci:
     runs-on: ubuntu-latest
-
+    container:
+      image: docker://manifoldai/orbyter-ml-dev:2.0
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python 3.10
