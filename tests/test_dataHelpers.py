@@ -9,7 +9,6 @@ from unittest.mock import patch, Mock, call, ANY
 from src.data.dataHelpers import DataHelper
 
 
-@patch('src.data.dataHelpers.os.system')
 class TestDataHelpers(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -46,7 +45,7 @@ class TestDataHelpers(unittest.TestCase):
     # @patch('data.dataHelpers.DataHelper._get_engagement_amounts')
     @patch('data.dataHelpers.QueryBuilder.build_query')
     @patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_amount_table_engagements_with_engagements_ids_list(self, mock_os, mock_db_execute_queries, mock_qb_build_query):
+    def test_get_amount_table_engagements_with_engagements_ids_list(self,  mock_db_execute_queries, mock_qb_build_query):
         # Arrange
         data_helper = DataHelper()
 
@@ -70,13 +69,8 @@ class TestDataHelpers(unittest.TestCase):
 
     @patch('data.dataHelpers.QueryBuilder.build_query')
     @patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_amount_table_with_no_engagement_ids(self, mock_os, mock_db_execute_queries, mock_qb_build_query):
-        # Arrange@classmethod
-
-    def tearDownClass(cls):
-        super().tearDownClass()
-
-        cls.env_patcher.stop()
+    def test_get_amount_table_with_no_engagement_ids(self,  mock_db_execute_queries, mock_qb_build_query):
+        # Arrange
         data_helper = DataHelper()
 
         mock_db_execute_queries.return_value = [pd.DataFrame([{"data": {"value1", "value2"}}])]
@@ -90,7 +84,7 @@ class TestDataHelpers(unittest.TestCase):
 
     @ patch('data.dataHelpers.QueryBuilder.build_query')
     @ patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_make_fsli_mappings(self, mock_os, mock_db_execute_queries, mock_querybuilder):
+    def test_make_fsli_mappings(self,  mock_db_execute_queries, mock_querybuilder):
         # Arrange
         data_helper = DataHelper()
 
@@ -124,7 +118,7 @@ class TestDataHelpers(unittest.TestCase):
 
     @ patch('data.dataHelpers.QueryBuilder.build_query')
     @ patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_engagement_amount_query_with_no_engagement_dates(self, mock_os, mock_db_execute_queries, mock_qb_build_query):
+    def test_get_engagement_amount_query_with_no_engagement_dates(self,  mock_db_execute_queries, mock_qb_build_query):
         # Arrange
         data_helper = DataHelper()
 
@@ -148,7 +142,7 @@ class TestDataHelpers(unittest.TestCase):
 
     @ patch('data.dataHelpers.QueryBuilder.build_query')
     @ patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_engagement_amounts_query_with_engagment_dates_list(self, mock_os, mock_db_execute_queries, mock_qb_build_query):
+    def test_get_engagement_amounts_query_with_engagment_dates_list(self,  mock_db_execute_queries, mock_qb_build_query):
         # Arrange
         data_helper = DataHelper()
 
@@ -172,7 +166,7 @@ class TestDataHelpers(unittest.TestCase):
 
     @ patch('data.dataHelpers.QueryBuilder')
     @ patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_flipping_id_amounts(self, mock_os, mock_db_execute_queries, mock_query_builder):
+    def test_get_flipping_id_amounts(self,  mock_db_execute_queries, mock_query_builder):
         # Arrange
         data_helper = DataHelper()
 
@@ -202,7 +196,7 @@ class TestDataHelpers(unittest.TestCase):
         pd.testing.assert_frame_equal(result, expected_amounts_df_return)
 
     @ patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_mapping_dict(self, mock_os, mock_connect):
+    def test_get_mapping_dict(self,  mock_connect):
         # Arrange
         data_helper = DataHelper()
 
@@ -227,7 +221,7 @@ class TestDataHelpers(unittest.TestCase):
         self.assertEqual(result, expected_mapping_dict)
 
     @ patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_engagement_info(self, mock_os, mock_connect):
+    def test_get_engagement_info(self,  mock_connect):
         # Arrange
         data_helper = DataHelper()
 
@@ -248,7 +242,7 @@ class TestDataHelpers(unittest.TestCase):
         self.assertEqual(result, expected_dict_return)
 
     @ patch('data.dataHelpers.DatabaseConnection.execute_queries')
-    def test_get_organization_info(self, mock_os, mock_connect):
+    def test_get_organization_info(self,  mock_connect):
         # Arrange
         data_helper = DataHelper()
 
