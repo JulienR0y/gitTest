@@ -5,7 +5,7 @@ from datetime import datetime
 from inspect import getcallargs, signature
 from unittest.mock import patch, Mock, call, ANY
 
-from data.dataHelpers import DataHelper
+from ..src.data.dataHelpers import DataHelper
 
 
 class TestDataHelpers(unittest.TestCase):
