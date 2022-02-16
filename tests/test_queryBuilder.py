@@ -1,6 +1,6 @@
 import unittest
 
-from data.queryBuilder import QueryBuilder
+from src.data.queryBuilder import QueryBuilder
 
 
 class TestQueryBuilder(unittest.TestCase):
