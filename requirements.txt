@@ -5,7 +5,7 @@
 data == 0.4
 
 # gitTest/src/data/dataHelpers.py: 4
-numpy == 1.22.0
+numpy == 1.19.0
 
 # gitTest/src/data/dataHelpers.py: 5
 # gitTest/tests/test_dataHelpers.py: 2
