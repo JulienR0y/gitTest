@@ -32,4 +32,4 @@ jobs:
           pipenv install --deploy --dev
       - name: Run test suite
         run: |
-          pytest tests -v
+          pipenv run pytest test -v
