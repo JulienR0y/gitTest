@@ -1,10 +1,18 @@
 import unittest
+import os
+
+from unittest import mock
 
 from src.data.queryBuilder import QueryBuilder
 
 
-@patch('os.system')
 class TestQueryBuilder(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.env_patcher = mock.patch.dict(os.environ)
+        cls.env_patcher.start()
+
+        super().setUpClass()
 
     def test_build_query_all_conditions(self, mock_os):
         # Arrange
@@ -173,3 +181,9 @@ class TestQueryBuilder(unittest.TestCase):
         self.assertEqual(result, expected_result_return)
 
     # endregion
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+
+        cls.env_patcher.stop()

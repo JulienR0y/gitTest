@@ -4,7 +4,7 @@ import os
 
 from datetime import datetime
 from inspect import getcallargs, signature
-from unittest.mock import patch, Mock, call, ANY
+from unittest.mock import patch, Mock, call, ANY, mock
 
 from src.data.dataHelpers import DataHelper
 
@@ -12,7 +12,7 @@ from src.data.dataHelpers import DataHelper
 class TestDataHelpers(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.env_patcher = Mock.patch.dict(os.environ)
+        cls.env_patcher = mock.patch.dict(os.environ)
         cls.env_patcher.start()
 
         super().setUpClass()
@@ -106,7 +106,7 @@ class TestDataHelpers(unittest.TestCase):
         amounts_df = pd.DataFrame(data=amounts_df_data)
 
         # Act
-        result = data_helper.make_fsli_mappings(amounts_df, "engagement_id")
+        result = data_helper.make_fsli_mappings(amounts_df, "engagement_iMockd")
         expected_amounts_df_date = {"col1": [1, 2, 3],
                                     "account_id": ["account_id_1", "account_id_2", "account_id_3"],
                                     "col3": [3, 4, 5],
@@ -156,7 +156,7 @@ class TestDataHelpers(unittest.TestCase):
 
         engagement_dates_list = ["engagement_id1", "engagement_id2"]
 
-        # Act
+        # Actmock
         data_helper._get_engagement_amounts(tenant_id="tenant_id", engagement_dates=engagement_dates_list)
 
         # Assert
