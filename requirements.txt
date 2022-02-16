@@ -11,7 +11,3 @@ pandas == 1.0.5
 # gitTest/src/utilities/dbConnection.py: 2
 psycopg2_binary == 2.9.2
 
-# gitTest/src/data/dataHelpers.py: 7
-# gitTest/tests/test_dataHelpers.py: 8
-# gitTest/tests/test_queryBuilder.py: 3
-src == 0.0.7
