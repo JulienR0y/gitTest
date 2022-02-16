@@ -4,11 +4,11 @@ import pandas as pd
 from datetime import datetime
 from inspect import getcallargs, signature
 from unittest.mock import patch, Mock, call, ANY
+with patch.dict(os.environ, {'key': 'mock-value'}):
+    from src.data.dataHelpers import DataHelper
 
-from src.data.dataHelpers import DataHelper
 
-
-@patch('os.system')
+@patch('src.data.dataHelpers.os.system')
 class TestDataHelpers(unittest.TestCase):
     def test_add_date_info(self, mock_os):
         # Arrange
