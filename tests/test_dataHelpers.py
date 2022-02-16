@@ -1,15 +1,23 @@
 import unittest
 import pandas as pd
+import os
 
 from datetime import datetime
 from inspect import getcallargs, signature
 from unittest.mock import patch, Mock, call, ANY
-with patch.dict(os.environ, {'key': 'mock-value'}):
-    from src.data.dataHelpers import DataHelper
+
+from src.data.dataHelpers import DataHelper
 
 
 @patch('src.data.dataHelpers.os.system')
 class TestDataHelpers(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.env_patcher = Mock.patch.dict(os.environ)
+        cls.env_patcher.start()
+
+        super().setUpClass()
+
     def test_add_date_info(self, mock_os):
         # Arrange
         data_helper = DataHelper()
@@ -63,7 +71,12 @@ class TestDataHelpers(unittest.TestCase):
     @patch('data.dataHelpers.QueryBuilder.build_query')
     @patch('data.dataHelpers.DatabaseConnection.execute_queries')
     def test_get_amount_table_with_no_engagement_ids(self, mock_os, mock_db_execute_queries, mock_qb_build_query):
-        # Arrange
+        # Arrange@classmethod
+
+    def tearDownClass(cls):
+        super().tearDownClass()
+
+        cls.env_patcher.stop()
         data_helper = DataHelper()
 
         mock_db_execute_queries.return_value = [pd.DataFrame([{"data": {"value1", "value2"}}])]
@@ -254,3 +267,9 @@ class TestDataHelpers(unittest.TestCase):
 
         # Assert
         self.assertEqual(result, expected_dict_return)
+
+    @classmethod
+    def tearDownClass(cls):
+        super().tearDownClass()
+
+        cls.env_patcher.stop()
