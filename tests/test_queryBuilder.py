@@ -14,7 +14,7 @@ class TestQueryBuilder(unittest.TestCase):
 
         super().setUpClass()
 
-    def test_build_query_all_conditions(self, mock_os):
+    def test_build_query_all_conditions(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = ["statement_1", "statement_2"]
@@ -28,7 +28,7 @@ class TestQueryBuilder(unittest.TestCase):
         self.assertEqual(result, expected_result_return)
 
     # region SELECT
-    def test_build_query_no_statement(self, mock_os):
+    def test_build_query_no_statement(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
@@ -54,7 +54,7 @@ class TestQueryBuilder(unittest.TestCase):
         # Assert
         self.assertEqual(result, expected_result_return)
 
-    def test_build_query_with_multiple_statement(self, mock_os):
+    def test_build_query_with_multiple_statement(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = ["statement_1", "statement_2"]
@@ -70,7 +70,7 @@ class TestQueryBuilder(unittest.TestCase):
     # endregion
 
     # region FROM
-    def test_build_query_no_table(self, mock_os):
+    def test_build_query_no_table(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
@@ -99,7 +99,7 @@ class TestQueryBuilder(unittest.TestCase):
 
     # region JOINS
 
-    def test_build_query_no_joins(self, mock_os):
+    def test_build_query_no_joins(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
@@ -112,7 +112,7 @@ class TestQueryBuilder(unittest.TestCase):
         # Assert
         self.assertEqual(result, expected_result_return)
 
-    def test_build_query_single_joins(self, mock_os):
+    def test_build_query_single_joins(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
@@ -125,7 +125,7 @@ class TestQueryBuilder(unittest.TestCase):
         # Assert
         self.assertEqual(result, expected_result_return)
 
-    def test_build_query_multiple_joins(self, mock_os):
+    def test_build_query_multiple_joins(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
@@ -141,7 +141,7 @@ class TestQueryBuilder(unittest.TestCase):
     # endregion
 
     # region WITH
-    def test_build_query_no_constraints(self, mock_os):
+    def test_build_query_no_constraints(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
@@ -154,7 +154,7 @@ class TestQueryBuilder(unittest.TestCase):
         # Assert
         self.assertEqual(result, expected_result_return)
 
-    def test_build_query_single_constraint(self, mock_os):
+    def test_build_query_single_constraint(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
@@ -167,7 +167,7 @@ class TestQueryBuilder(unittest.TestCase):
         # Assert
         self.assertEqual(result, expected_result_return)
 
-    def test_build_query_multiple_constraint(self, mock_os):
+    def test_build_query_multiple_constraint(self):
         # Arrange
         query_builder = QueryBuilder()
         selects = None
