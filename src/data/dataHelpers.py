@@ -4,8 +4,7 @@ from typing import List
 import numpy as np
 import pandas as pd
 from ..data.queryBuilder import QueryBuilder
-from stamped_ai.utilities.data.dbConnection import (DatabaseConnection,
-                                                    DbConstants)
+from src.utilities.dbConnection import DatabaseConnection, DbConstants
 
 
 class DataHelper:
