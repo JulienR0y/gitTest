@@ -49,4 +49,4 @@ jobs:
         pipenv install
         pip install pandas
         pip install numpy
-        -m pytest 
+        python -m unittest discover
